@@ -11,7 +11,7 @@ class Contoh1 extends CI_Model{
   function export_to_xls(){
     $this->load->library('xls_obj');
     $this->excel->initial(base_url(),'Contoh1','2025');
-		$this->excel->createSheet();
+    $this->excel->createSheet();
 
     // isi data disheet 0 atau sheet pertama
     //Atur Lebar Kolom
