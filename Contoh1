@@ -1,0 +1,57 @@
+/*
+Silahkan Copy library dan thirtyparty
+*/
+
+class Contoh1 extends CI_Model{
+	 
+	function __construct(){
+       	parent::__construct();
+  }
+
+  function export_to_xls(){
+    $this->load->library('xls_obj');
+    $this->excel->initial(base_url(),'Contoh1','2025');
+		$this->excel->createSheet();
+
+    // isi data disheet 0 atau sheet pertama
+    //Atur Lebar Kolom
+    $this->excel->set_width(1,9); //kolom 1 lebar 9
+		$this->excel->set_width(2,16);
+		$this->excel->set_width(3,11);
+		$this->excel->set_width(4,17);
+		$this->excel->set_width(5,20);
+    //
+    $this->excel->text(0,1,$vtop,'Baris',true);  
+		$this->excel->text(0,2,$vtop,'Tanggal Faktur',true);
+		$this->excel->text(0,3,$vtop,'Jenis Faktur',true);
+		$this->excel->text(0,4,$vtop,'Kode Transaksi',true);
+		$this->excel->text(0,5,$vtop,'Keterangan Tambahan',true);
+    //beri nama Sheet
+    $this->excel->sheet_name(0,'Sheet_master') ;
+
+    // isi data disheet 1 atau sheet perkedua
+    $this->excel->text(1,1,$vtop,'Baris');
+		$this->excel->text(1,2,$vtop,'Barang/Jasa');
+		$this->excel->text(1,3,$vtop,'Kode Barang Jasa');
+		$this->excel->text(1,4,$vtop,'Nama Barang/Jasa');
+		$this->excel->text(1,5,$vtop,'Nama Satuan Ukur');
+    $this->excel->sheet_name(1,'Sheet_detail') ;
+
+		$this->excel->set_width(1,9);
+		$this->excel->set_width(2,11);
+		$this->excel->set_width(3,17);
+		$this->excel->set_width(4,60);
+		$this->excel->set_width(5,17);
+
+    $this->excel->Output('Nama_file');
+
+
+  }
+
+
+}
+/*
+cell($nsheet = 0, $kolom,$baris,$kata,$lbold = false, $nfont = 10, $lborder = 0) 
+Pilihan cell , text , number, number0
+ 
+*/
